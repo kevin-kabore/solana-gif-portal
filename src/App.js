@@ -294,6 +294,8 @@ const App = () => {
       setGifList(null)
     }
   }
+
+  const getGifListMemoized = React.useCallback(getGifList, [])
   /*
    * Fetches and sets the gifs in state when the walletAddress first changes to defined
    */
@@ -306,9 +308,9 @@ const App = () => {
       // set state with the gif list
       // setGifList(TEST_GIFS)
 
-      getGifList()
+      getGifListMemoized()
     }
-  }, [walletAddress])
+  }, [walletAddress, getGifListMemoized])
 
   return (
     <div className="App">
